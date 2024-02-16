@@ -11,6 +11,12 @@ A dynamic dashboard created to check all the necessary game information of Euro 
 - Oil Pressure Gauge
 - Water Temperature Gauge
 - Speed Gauge
+- Fuel percentage left indicator
+- Air pressure percentage indicator
+- Oil pressure percentage indicator
+- Water temperature percentage indicator
+- RPM indicator in text format
+- Amount of fuel left in Litres
 - Digital Speedometer (KMH/MPH)
 - Gear Position Indicator
 - Toggleable between KMH/MPH
@@ -25,3 +31,11 @@ A dynamic dashboard created to check all the necessary game information of Euro 
 - Truck/Trailer damage indicator
 - Odometer
 - Current game time
+
+## Preview
+
+### Dashboard in Kilometers
+![Dashboard in KM](dashboard_images/dashboard_km.png)
+
+### Dashboard in Miles
+![Dashboard in MI](dashboard_images/dashboard_mi.png)

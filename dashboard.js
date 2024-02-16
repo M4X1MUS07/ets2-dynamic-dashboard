@@ -823,6 +823,143 @@ Funbit.Ets.Telemetry.Dashboard.prototype.filter = function (data, utils) {
 
     data._time = this.timeToReadableString(data.game.time);
 
+    // fuel percentage text added myself
+
+    var fuelPercentage = (data.truck.fuel / data.truck.fuelCapacity) * 100;
+    fuelPercentage = fuelPercentage.toFixed(2);
+    var fuelPercentageElement = document.querySelector('._fuelDial .truck-fuel + ._fuelPercentage');
+
+    if (!fuelPercentageElement) {
+        fuelPercentageElement = document.createElement('div');
+        fuelPercentageElement.classList.add('_fuelPercentage');
+        document.querySelector('._fuelDial').appendChild(fuelPercentageElement);
+    }
+
+    fuelPercentageElement.textContent = fuelPercentage + '%';
+
+    fuelPercentageElement.style.color = 'white';
+    fuelPercentageElement.style.fontSize = '32px';
+    fuelPercentageElement.style.position = 'absolute';
+    fuelPercentageElement.style.top = '90%';
+    fuelPercentageElement.style.left = '50%';
+    fuelPercentageElement.style.transform = 'translateX(-50%)';
+
+    // end of fuel percentage text
+
+    // fuel amount text added myself
+
+    var fuelAmountElement = document.querySelector('._speedDial ._fuelAmount');
+
+    if (!fuelAmountElement) {
+        fuelAmountElement = document.createElement('div');
+        fuelAmountElement.classList.add('_fuelAmount');
+        document.querySelector('._speedDial').appendChild(fuelAmountElement);
+    }
+
+    fuelAmountElement.textContent = `${(data.truck.fuel).toFixed(2)}L / ${data.truck.fuelCapacity}L`;
+
+    fuelAmountElement.style.color = 'white';
+    fuelAmountElement.style.fontSize = '32px';
+    fuelAmountElement.style.position = 'absolute';
+    fuelAmountElement.style.top = '57%';
+    fuelAmountElement.style.left = '50%';
+    fuelAmountElement.style.transform = 'translateX(-50%)';
+
+    // end of fuel amount text
+
+    // air pressure percentage text added myself
+
+    var airPressureMax = Math.round(data.truck.airPressureWarningValue / 2 * 5);
+    var airPressurePercentage = (data.truck.airPressure / airPressureMax) * 100;
+    airPressurePercentage = airPressurePercentage.toFixed(2);
+    var airPressurePercentageElement = document.querySelector('._airPressureDial .truck-airPressure + ._airPressurePercentage');
+
+    if (!airPressurePercentageElement) {
+        airPressurePercentageElement = document.createElement('div');
+        airPressurePercentageElement.classList.add('_airPressurePercentage');
+        document.querySelector('._airPressureDial').appendChild(airPressurePercentageElement);
+    }
+
+    airPressurePercentageElement.textContent = airPressurePercentage + '%';
+
+    airPressurePercentageElement.style.color = 'white';
+    airPressurePercentageElement.style.fontSize = '32px';
+    airPressurePercentageElement.style.position = 'absolute';
+    airPressurePercentageElement.style.top = '90%';
+    airPressurePercentageElement.style.left = '50%';
+    airPressurePercentageElement.style.transform = 'translateX(-50%)';
+
+    // end of air pressure percentage text
+
+    // oil pressure percentage text added myself
+
+    var oilPressurePercentage = (data.truck.oilPressure / 100) * 100;
+    oilPressurePercentage = oilPressurePercentage.toFixed(2);
+    var oilPressurePercentageElement = document.querySelector('._oilPressureDial .truck-oilPressure + ._oilPressurePercentage');
+
+    if (!oilPressurePercentageElement) {
+        oilPressurePercentageElement = document.createElement('div');
+        oilPressurePercentageElement.classList.add('_oilPressurePercentage');
+        document.querySelector('._oilPressureDial').appendChild(oilPressurePercentageElement);
+    }
+
+    oilPressurePercentageElement.textContent = oilPressurePercentage + '%';
+
+    oilPressurePercentageElement.style.color = 'white';
+    oilPressurePercentageElement.style.fontSize = '32px';
+    oilPressurePercentageElement.style.position = 'absolute';
+    oilPressurePercentageElement.style.top = '90%';
+    oilPressurePercentageElement.style.left = '50%';
+    oilPressurePercentageElement.style.transform = 'translateX(-50%)';
+
+    // end of oil pressure percentage text
+
+    // water temperature percentage text added myself
+
+    var waterTemperatureMax = Math.round(data.truck.waterTemperatureWarningValue + data.truck.waterTemperatureWarningValue / 3 * 1.2857);
+    var waterTemperaturePercentage = (data.truck.waterTemperature / waterTemperatureMax) * 100;
+    waterTemperaturePercentage = waterTemperaturePercentage.toFixed(2);
+    var waterTemperaturePercentageElement = document.querySelector('._waterTemperatureDial .truck-waterTemperature + ._airTemperaturePercentage');
+
+    if (!waterTemperaturePercentageElement) {
+        waterTemperaturePercentageElement = document.createElement('div');
+        waterTemperaturePercentageElement.classList.add('_airTemperaturePercentage');
+        document.querySelector('._waterTemperatureDial').appendChild(waterTemperaturePercentageElement);
+    }
+
+    waterTemperaturePercentageElement.textContent = waterTemperaturePercentage + '%';
+
+    waterTemperaturePercentageElement.style.color = 'white';
+    waterTemperaturePercentageElement.style.fontSize = '32px';
+    waterTemperaturePercentageElement.style.position = 'absolute';
+    waterTemperaturePercentageElement.style.top = '90%';
+    waterTemperaturePercentageElement.style.left = '50%';
+    waterTemperaturePercentageElement.style.transform = 'translateX(-50%)';
+
+    // end of water temperature percentage text
+
+    // engine rpm text added myself
+
+    var currentEngineRPM = Math.round(data.truck.engineRpm);
+    var engineRPMElement = document.querySelector('._rpmDial .truck-engineRpm + ._currentEngineRPM');
+
+    if (!engineRPMElement) {
+        engineRPMElement = document.createElement('div');
+        engineRPMElement.classList.add('_currentEngineRPM');
+        document.querySelector('._rpmDial').appendChild(engineRPMElement);
+    }
+
+    engineRPMElement.textContent = currentEngineRPM;
+
+    engineRPMElement.style.color = 'white';
+    engineRPMElement.style.fontSize = '32px';
+    engineRPMElement.style.position = 'absolute';
+    engineRPMElement.style.top = '57%';
+    engineRPMElement.style.left = '50%';
+    engineRPMElement.style.transform = 'translateX(-50%)';
+
+    // end of engine rpm text
+
     data._blinkerLeftOn = data.truck.blinkerLeftOn;
     data._blinkerRightOn = data.truck.blinkerRightOn;
     data._fuelWarningOn = data.truck.fuelWarningOn;
